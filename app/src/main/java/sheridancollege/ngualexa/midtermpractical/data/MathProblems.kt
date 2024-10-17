@@ -18,7 +18,30 @@ fun mathProblems(): List<String> {
     }
     return questions
 }
+fun solveQuestion(question: String): Int {
+    var values = question.split(" ")
+    val number1 = values[0].toInt()
+    val number2 = values[2].toInt()
+    val operation = values[1]
 
-fun checkAnswers(questions: List<String>, answers: List<String>) {
-    
+    if (operation == "*") {
+        return (number1 * number2);
+    } else if (operation == "+") {
+        return (number1 + number2);
+    } else {
+        return (number1 - number2);
+    }
 }
+fun checkAnswers(questions: List<String>, answers: List<String>) {
+    questions.forEachIndexed { index, question ->
+        val checkAnswer = solveQuestion(question)
+        if(answers[index].toInt() == checkAnswer) {
+            correctAnswers.add(answers[index])
+        } else {
+            wrongAnswers.add(answers[index])
+        }
+    }
+}
+
+
+
