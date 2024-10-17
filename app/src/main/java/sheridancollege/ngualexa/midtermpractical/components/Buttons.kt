@@ -12,17 +12,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 
 @Composable
-fun Buttons() {
-    var answers by remember { mutableStateOf(listOf<String>()) }
-    var correctAnswers by remember { mutableStateOf(listOf<String>()) }
-    var wrongAnswers by remember { mutableStateOf(listOf<String>()) }
+fun Buttons(onCheckAnswers: () -> Unit, onGenerateNewMathProblems: () -> Unit) {
     Row(modifier = Modifier.fillMaxWidth()) {
-//        Button(onClick = { unit }) {
-//            Text(text = "Generate new Math Problems")
-//        }
-//
-//        Button(onClick = { unit }) {
-//            Text(text = "Check Answers")
-//        }
+        Button(onClick = onGenerateNewMathProblems) {
+            Text(text = "Generate new Math Problems")
+        }
+
+        Button(onClick = onCheckAnswers) {
+            Text(text = "Check Answers")
+        }
     }
 }

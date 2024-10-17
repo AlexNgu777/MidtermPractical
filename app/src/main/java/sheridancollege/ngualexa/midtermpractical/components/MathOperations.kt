@@ -16,7 +16,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 
 
 @Composable
-fun MathProblemsSection(questions: List<String>, answers: MutableList<String>) {
+fun MathOperations(questions: List<String>, answers: MutableList<String>) {
     Column {
         questions.forEachIndexed { index, question ->
             Row(modifier = Modifier.fillMaxWidth()) {
