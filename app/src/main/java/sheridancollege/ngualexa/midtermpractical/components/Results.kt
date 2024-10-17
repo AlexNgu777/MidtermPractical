@@ -13,15 +13,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.TransformedText
 
 @Composable
-fun Results() {
-    var correctAnswers by remember { mutableStateOf(listOf<String>()) }
-    var wrongAnswers by remember { mutableStateOf(listOf<String>()) }
-    var joinedCorrectAnswers = correctAnswers.joinToString(", ")
-    var joinedWrongAnswers = wrongAnswers.joinToString(", ")
+fun Results(numberOfCorrectAnswers: Int, numberOfWrongAnswers: Int) {
     Row(modifier = Modifier.fillMaxWidth()) {
         Column {
-            Text(text = "Correct Answers: ${joinedCorrectAnswers} ")
-            Text(text = "Incorrect Answers: ${joinedWrongAnswers}")
+            Text(text = "Correct Answers: ${numberOfCorrectAnswers} ")
+            Text(text = "Incorrect Answers: ${numberOfWrongAnswers}")
         }
     }
 }

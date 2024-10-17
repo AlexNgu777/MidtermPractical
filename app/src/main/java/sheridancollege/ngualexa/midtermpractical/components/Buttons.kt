@@ -17,7 +17,6 @@ fun Buttons(onCheckAnswers: () -> Unit, onGenerateNewMathProblems: () -> Unit) {
         Button(onClick = onGenerateNewMathProblems) {
             Text(text = "Generate new Math Problems")
         }
-
         Button(onClick = onCheckAnswers) {
             Text(text = "Check Answers")
         }

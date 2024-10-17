@@ -17,12 +17,9 @@ import sheridancollege.ngualexa.midtermpractical.ui.theme.MidtermPracticalTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            MidtermPracticalTheme {
-                TutorApp()
-                }
-            }
+        setContent() {
+            TutorApp()
+        }
         }
     }
 

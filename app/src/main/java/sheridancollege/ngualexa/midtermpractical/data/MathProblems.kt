@@ -4,20 +4,18 @@ import kotlin.random.Random
 
 var operations = listOf<String>("*","+","-")
 var questions = mutableListOf<String>()
-var correctAnswers = mutableListOf<String>()
-var wrongAnswers = mutableListOf<String>()
 
 
 fun mathProblems(): List<String> {
-    for (i in 0..4) {
-        var number1 = Random.nextInt(1,100)
-        var number2 = Random.nextInt(1,100)
-        var operation = operations.random()
-        var question = "$number1 $operation $number2"
-        questions[i] = question
+    val operations = listOf("*", "+", "-")
+    return List(4) {
+        val number1 = Random.nextInt(1, 100)
+        val number2 = Random.nextInt(1, 100)
+        val operation = operations.random()
+        "$number1 $operation $number2"
     }
-    return questions
 }
+
 fun solveQuestion(question: String): Int {
     var values = question.split(" ")
     val number1 = values[0].toInt()
@@ -28,19 +26,30 @@ fun solveQuestion(question: String): Int {
         return (number1 * number2);
     } else if (operation == "+") {
         return (number1 + number2);
-    } else {
+    } else if(operation == "-") {
         return (number1 - number2);
+    } else {
+        return 0;
     }
 }
-fun checkAnswers(questions: List<String>, answers: List<String>) {
-    questions.forEachIndexed { index, question ->
-        val checkAnswer = solveQuestion(question)
-        if(answers[index].toInt() == checkAnswer) {
-            correctAnswers.add(answers[index])
+fun checkAnswers(questions: List<String>, answers: List<String>, correctness: MutableList<Boolean?>): List<Int> {
+    var correctAnswers = 0
+    var wrongAnswers = 0
+    questions.forEachIndexed{ index, question ->
+        var correctAnswer = solveQuestion(question)
+        var userAnswer = answers[index].toInt()
+
+        if(userAnswer == correctAnswer)  {
+            correctAnswers++
+            correctness[index] = true
+
         } else {
-            wrongAnswers.add(answers[index])
+            wrongAnswers++
+            correctness[index] = false
         }
     }
+
+    return listOf(correctAnswers, wrongAnswers)
 }
 
 
