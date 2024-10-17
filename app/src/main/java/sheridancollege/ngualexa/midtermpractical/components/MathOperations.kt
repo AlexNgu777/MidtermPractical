@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun MathOperations(questions: List<String>, answers: MutableList<String>, isCorrect: List<Boolean?>) {
-    Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(modifier = Modifier.fillMaxWidth()) {
         questions.forEachIndexed { index, question ->
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
                 Text(text = question, fontWeight = FontWeight.Bold, modifier = Modifier.padding(horizontal = 50.dp))

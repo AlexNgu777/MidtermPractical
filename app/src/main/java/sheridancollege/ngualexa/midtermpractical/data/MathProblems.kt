@@ -2,10 +2,6 @@ package sheridancollege.ngualexa.midtermpractical.data
 
 import kotlin.random.Random
 
-var operations = listOf<String>("*","+","-")
-var questions = mutableListOf<String>()
-
-
 fun mathProblems(): List<String> {
     val operations = listOf("*", "+", "-")
     return List(4) {
@@ -35,9 +31,15 @@ fun solveQuestion(question: String): Int {
 fun checkAnswers(questions: List<String>, answers: List<String>, correctness: MutableList<Boolean?>): List<Int> {
     var correctAnswers = 0
     var wrongAnswers = 0
+
     questions.forEachIndexed{ index, question ->
         var correctAnswer = solveQuestion(question)
-        var userAnswer = answers[index].toInt()
+
+        if(answers[index].isEmpty()) {
+            return listOf(correctAnswers, wrongAnswers)
+        }
+
+        var userAnswer = answers[index].trim().toInt()
 
         if(userAnswer == correctAnswer)  {
             correctAnswers++
